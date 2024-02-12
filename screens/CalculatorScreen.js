@@ -19,14 +19,17 @@ export default CalculatorScreen = () => {
     } else if (symbol === "Del") {
       const lastInputIndex = display.indexOf(symbol);
       const lastIndex = display.length - 1;
-      setDisplay(display.slice(lastInputIndex, lastIndex));
+      setDisplay(display.slice(0, lastIndex));
+      // console.log(display[0]);
     } else {
       setDisplay(display + symbol);
     }
   };
   return (
     <View>
-      <Text style={{ fontWeight: "bold", fontSize: 30 }}>Calculator</Text>
+      <Text style={{ fontWeight: "bold", fontSize: 30, textAlign: "center" }}>
+        Calculator
+      </Text>
       <View
         style={{
           marginTop: "20px",
