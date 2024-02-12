@@ -20,9 +20,8 @@ export default CalculatorScreen = () => {
       const lastInputIndex = display.indexOf(symbol);
       const lastIndex = display.length - 1;
       setDisplay(display.slice(0, lastIndex));
-      // console.log(display[0]);
     } else {
-      setDisplay(display + symbol);
+      display !== "0" ? setDisplay(display + symbol) : setDisplay(symbol);
     }
   };
   return (
