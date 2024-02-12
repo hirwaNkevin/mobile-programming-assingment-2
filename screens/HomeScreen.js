@@ -1,5 +1,4 @@
 import { Image, StyleSheet, Text, View } from "react-native";
-import { ScrollView } from "react-native-web";
 import image from "../assets/Kevin Hirwa Nzitatira.jpeg";
 const HomeScreen = () => {
   return (

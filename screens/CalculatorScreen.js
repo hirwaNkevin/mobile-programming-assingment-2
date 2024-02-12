@@ -1,19 +1,29 @@
-import { View, Text, TextInput, Button } from "react-native";
+import { View, TextInput, Button, StyleSheet, Text } from "react-native";
 
 export default CalculatorScreen = () => {
+  const handleNumberButtonClick = (symbol) => {};
   return (
     <View>
-      <DisplayComponent />
+      <InputDisplayComponent />
+      <OutputDisplayComponent />
       <KeyBoard />
     </View>
   );
 };
 
-const DisplayComponent = () => {
+const InputDisplayComponent = () => {
   return <TextInput placeholder="0" />;
 };
 
-const KeyBoard = () => {
+const OutputDisplayComponent = () => {
+  return (
+    <View style={{ backgroundColor: "#aaa" }}>
+      <Text style={{ color: "#555" }}>0</Text>
+    </View>
+  );
+};
+
+const KeyBoard = ({ handleNumberButtonClick }) => {
   return (
     <View>
       <View style={[styles.KeyBoardRow]}>
@@ -21,25 +31,85 @@ const KeyBoard = () => {
         <KeyBoardKey symbol={"Del"} onPressAction={() => {}} type={1} />
       </View>
       <View style={[styles.KeyBoardRow]}>
-        <KeyBoardKey symbol={"1"} onPressAction={() => {}} type={0} />
-        <KeyBoardKey symbol={"2"} onPressAction={() => {}} type={0} />
-        <KeyBoardKey symbol={"3"} onPressAction={() => {}} type={0} />
+        <KeyBoardKey
+          symbol={"1"}
+          onPressAction={() => {
+            handleNumberButtonClick();
+          }}
+          type={0}
+        />
+        <KeyBoardKey
+          symbol={"2"}
+          onPressAction={() => {
+            handleNumberButtonClick();
+          }}
+          type={0}
+        />
+        <KeyBoardKey
+          symbol={"3"}
+          onPressAction={() => {
+            handleNumberButtonClick();
+          }}
+          type={0}
+        />
         <KeyBoardKey symbol={"+"} onPressAction={() => {}} type={1} />
       </View>
       <View style={[styles.KeyBoardRow]}>
-        <KeyBoardKey symbol={"4"} onPressAction={() => {}} type={0} />
-        <KeyBoardKey symbol={"5"} onPressAction={() => {}} type={0} />
-        <KeyBoardKey symbol={"6"} onPressAction={() => {}} type={0} />
+        <KeyBoardKey
+          symbol={"4"}
+          onPressAction={() => {
+            handleNumberButtonClick();
+          }}
+          type={0}
+        />
+        <KeyBoardKey
+          symbol={"5"}
+          onPressAction={() => {
+            handleNumberButtonClick();
+          }}
+          type={0}
+        />
+        <KeyBoardKey
+          symbol={"6"}
+          onPressAction={() => {
+            handleNumberButtonClick();
+          }}
+          type={0}
+        />
         <KeyBoardKey symbol={"-"} onPressAction={() => {}} type={1} />
       </View>
       <View style={[styles.KeyBoardRow]}>
-        <KeyBoardKey symbol={"7"} onPressAction={() => {}} type={0} />
-        <KeyBoardKey symbol={"8"} onPressAction={() => {}} type={0} />
-        <KeyBoardKey symbol={"9"} onPressAction={() => {}} type={0} />
+        <KeyBoardKey
+          symbol={"7"}
+          onPressAction={() => {
+            handleNumberButtonClick();
+          }}
+          type={0}
+        />
+        <KeyBoardKey
+          symbol={"8"}
+          onPressAction={() => {
+            handleNumberButtonClick();
+          }}
+          type={0}
+        />
+        <KeyBoardKey
+          symbol={"9"}
+          onPressAction={() => {
+            handleNumberButtonClick();
+          }}
+          type={0}
+        />
         <KeyBoardKey symbol={"*"} onPressAction={() => {}} type={1} />
       </View>
       <View style={[styles.KeyBoardRow]}>
-        <KeyBoardKey symbol={"0"} onPressAction={() => {}} type={0} />
+        <KeyBoardKey
+          symbol={"0"}
+          onPressAction={() => {
+            handleNumberButtonClick();
+          }}
+          type={0}
+        />
         <KeyBoardKey symbol={"+"} onPressAction={() => {}} type={1} />
       </View>
     </View>
@@ -47,12 +117,14 @@ const KeyBoard = () => {
 };
 
 const KeyBoardKey = ({ symbol, onPressAction, type }) => {
-  <Button
-    title={symbol}
-    onPress={onPressAction}
-    color={!type ? "#f2f2f2" : "#001"}
-    accessibilityLabel={symbol + " Key"}
-  />;
+  return (
+    <Button
+      title={symbol}
+      onPress={onPressAction}
+      color={!type ? "#ddd" : "#001"}
+      accessibilityLabel={symbol + " Key"}
+    />
+  );
 };
 
 const styles = StyleSheet.create({
