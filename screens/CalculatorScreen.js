@@ -20,6 +20,9 @@ export default CalculatorScreen = () => {
       const lastInputIndex = display.indexOf(symbol);
       const lastIndex = display.length - 1;
       setDisplay(display.slice(0, lastIndex));
+    } else if (symbol === "C") {
+      setDisplay("0");
+      setResult("0");
     } else {
       display !== "0" ? setDisplay(display + symbol) : setDisplay(symbol);
     }
