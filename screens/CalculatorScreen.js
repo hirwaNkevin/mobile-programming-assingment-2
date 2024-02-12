@@ -10,8 +10,8 @@ import {
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 export default CalculatorScreen = () => {
-  const [display, setDisplay] = useState("0");
-  const [result, setResult] = useState("0");
+  const [display, setDisplay] = useState("");
+  const [result, setResult] = useState("");
   const handleNumberButtonClick = (symbol) => {
     if (symbol === "=") {
       setResult(eval(display).toString());
@@ -21,10 +21,10 @@ export default CalculatorScreen = () => {
       const lastIndex = display.length - 1;
       setDisplay(display.slice(0, lastIndex));
     } else if (symbol === "C") {
-      setDisplay("0");
-      setResult("0");
+      setDisplay("");
+      setResult("");
     } else {
-      display !== "0" ? setDisplay(display + symbol) : setDisplay(symbol);
+      display !== "" ? setDisplay(display + symbol) : setDisplay(symbol);
     }
   };
   return (
