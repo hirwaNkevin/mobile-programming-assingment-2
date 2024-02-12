@@ -11,12 +11,22 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 
 export default CalculatorScreen = () => {
   const [display, setDisplay] = useState("0");
+  const [result, setResult] = useState("0");
   const handleNumberButtonClick = (symbol) => {
-    setDisplay(display + symbol);
+    if (symbol === "=") {
+      setResult(eval(display).toString());
+      setDisplay("");
+    } else if (symbol === "Del") {
+      const lastInputIndex = display.indexOf(symbol);
+      const lastIndex = display.length - 1;
+      setDisplay(display.slice(lastInputIndex, lastIndex));
+    } else {
+      setDisplay(display + symbol);
+    }
   };
   return (
     <View>
-      <Text style={{ fontWeight: "bold", fontSize: "20px" }}>Calculator</Text>
+      <Text style={{ fontWeight: "bold", fontSize: 30 }}>Calculator</Text>
       <View
         style={{
           marginTop: "20px",
@@ -25,31 +35,32 @@ export default CalculatorScreen = () => {
           marginRight: "auto",
         }}
       >
-        <InputDisplayComponent />
-        <OutputDisplayComponent display={display} />
+        <InputDisplayComponent display={display} />
+        <OutputDisplayComponent result={result} />
         <KeyBoard handleNumberButtonClick={handleNumberButtonClick} />
       </View>
     </View>
   );
 };
 
-const InputDisplayComponent = () => {
+const OutputDisplayComponent = ({ result }) => {
+  return (
+    <View style={{ padding: "5px" }}>
+      <Text style={{ color: "#555" }}>{result}</Text>
+    </View>
+  );
+};
+
+const InputDisplayComponent = ({ display }) => {
   return (
     <TextInput
       style={{
         backgroundColor: "#aaa",
         padding: "5px",
       }}
-      placeholder="0"
+      placeholder={display}
+      value={display}
     />
-  );
-};
-
-const OutputDisplayComponent = ({ display }) => {
-  return (
-    <View style={{ padding: "5px" }}>
-      <Text style={{ color: "#555" }}>{display}</Text>
-    </View>
   );
 };
 
