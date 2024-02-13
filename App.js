@@ -1,4 +1,3 @@
-import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from "@react-navigation/native";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import HomeScreen from "./screens/HomeScreen";
@@ -6,6 +5,7 @@ import CalculatorScreen from "./screens/CalculatorScreen";
 import AboutScreen from "./screens/AboutScreen";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { Image } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 // Import your custom icons
 import homeIcon from "./assets/home_icon.svg";
@@ -16,14 +16,15 @@ const Tab = createMaterialBottomTabNavigator();
 const Drawer = createDrawerNavigator();
 
 export default function App() {
+  const [theme, setTheme] = useState("dark");
   return (
     <NavigationContainer>
       <Tab.Navigator
         tabBarOptions={{
           showIcon: true,
           showLabel: false,
-          style: { backgroundColor: 'white' },
-          indicatorStyle: { backgroundColor: 'blue' }
+          style: { backgroundColor: "white" },
+          indicatorStyle: { backgroundColor: "blue" },
         }}
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
