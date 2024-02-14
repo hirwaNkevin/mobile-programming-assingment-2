@@ -17,44 +17,154 @@ const Drawer = createDrawerNavigator();
 
 export default function App() {
   return (
+    // <NavigationContainer>
+    //   {/* <Tab.Navigator
+    //     tabBarOptions={{
+    //       showIcon: true,
+    //       showLabel: false,
+    //       style: { backgroundColor: "white" },
+    //       indicatorStyle: { backgroundColor: "blue" },
+    //     }}
+    //     screenOptions={({ route }) => ({
+    //       tabBarIcon: ({ focused, color, size }) => {
+    //         let iconSource;
+    //         if (route.name === "Home") {
+    //           iconSource = homeIcon;
+    //         } else if (route.name === "Calculator") {
+    //           iconSource = calculatorIcon;
+    //         } else if (route.name === "About") {
+    //           iconSource = aboutIcon;
+    //         }
+    //         return (
+    //           <Image source={iconSource} style={{ width: 25, height: 25 }} />
+    //         );
+    //       },
+    //     })}
+    //   >
+    //     <Tab.Screen
+    //       name="Home"
+    //       component={HomeScreenTabedComponent}
+    //     ></Tab.Screen>
+    //     <Tab.Screen name="Calculator" component={CalculatorScreen}></Tab.Screen>
+    //     <Tab.Screen name="About" component={AboutScreen}></Tab.Screen>
+    //   </Tab.Navigator> */}
+    // </NavigationContainer>
     <NavigationContainer>
-      <Tab.Navigator
-        tabBarOptions={{
-          showIcon: true,
-          showLabel: false,
-          style: { backgroundColor: "white" },
-          indicatorStyle: { backgroundColor: "blue" },
-        }}
-        screenOptions={({ route }) => ({
-          tabBarIcon: ({ focused, color, size }) => {
-            let iconSource;
-            if (route.name === "Home") {
-              iconSource = homeIcon;
-            } else if (route.name === "Calculator") {
-              iconSource = calculatorIcon;
-            } else if (route.name === "About") {
-              iconSource = aboutIcon;
-            }
-            return (
-              <Image source={iconSource} style={{ width: 25, height: 25 }} />
-            );
-          },
-        })}
-      >
-        <Tab.Screen name="Home" component={HomeScreen}></Tab.Screen>
-        <Tab.Screen name="Calculator" component={CalculatorScreen}></Tab.Screen>
-        <Tab.Screen name="About" component={AboutScreen}></Tab.Screen>
-      </Tab.Navigator>
-      {/* <NavigationContainer>
-        <Drawer.Navigator>
-          <Drawer.Screen name="Home" component={HomeScreen}></Drawer.Screen>
-          <Drawer.Screen
-            name="Calculator"
-            component={CalculatorScreen}
-          ></Drawer.Screen>
-          <Drawer.Screen name="About" component={AboutScreen}></Drawer.Screen>
-        </Drawer.Navigator>
-      </NavigationContainer> */}
+      <Drawer.Navigator>
+        <Drawer.Screen
+          name="Home"
+          component={HomeScreenTabedComponent}
+        ></Drawer.Screen>
+        <Drawer.Screen
+          name="Calculator"
+          component={CalculatorScreenTabedComponent}
+        ></Drawer.Screen>
+        <Drawer.Screen
+          name="About"
+          component={AboutScreenTabedComponent}
+        ></Drawer.Screen>
+      </Drawer.Navigator>
     </NavigationContainer>
   );
 }
+
+const HomeScreenTabedComponent = () => {
+  return (
+    <Tab.Navigator
+      tabBarOptions={{
+        showIcon: true,
+        showLabel: false,
+        style: { backgroundColor: "white" },
+        indicatorStyle: { backgroundColor: "blue" },
+      }}
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ focused, color, size }) => {
+          let iconSource;
+          if (route.name === "Home") {
+            iconSource = homeIcon;
+          } else if (route.name === "Calculator") {
+            iconSource = calculatorIcon;
+          } else if (route.name === "About") {
+            iconSource = aboutIcon;
+          }
+          return (
+            <Image source={iconSource} style={{ width: 25, height: 25 }} />
+          );
+        },
+      })}
+      initialRouteName="Home"
+      initialTabIndex={0}
+    >
+      <Tab.Screen name="Home" component={HomeScreen}></Tab.Screen>
+      <Tab.Screen name="Calculator" component={CalculatorScreen}></Tab.Screen>
+      <Tab.Screen name="About" component={AboutScreen}></Tab.Screen>
+    </Tab.Navigator>
+  );
+};
+
+const CalculatorScreenTabedComponent = () => {
+  return (
+    <Tab.Navigator
+      tabBarOptions={{
+        showIcon: true,
+        showLabel: false,
+        style: { backgroundColor: "white" },
+        indicatorStyle: { backgroundColor: "blue" },
+      }}
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ focused, color, size }) => {
+          let iconSource;
+          if (route.name === "Home") {
+            iconSource = homeIcon;
+          } else if (route.name === "Calculator") {
+            iconSource = calculatorIcon;
+          } else if (route.name === "About") {
+            iconSource = aboutIcon;
+          }
+          return (
+            <Image source={iconSource} style={{ width: 25, height: 25 }} />
+          );
+        },
+      })}
+      initialRouteName="Calculator"
+      initialTabIndex={1}
+    >
+      <Tab.Screen name="Home" component={HomeScreen}></Tab.Screen>
+      <Tab.Screen name="Calculator" component={CalculatorScreen}></Tab.Screen>
+      <Tab.Screen name="About" component={AboutScreen}></Tab.Screen>
+    </Tab.Navigator>
+  );
+};
+const AboutScreenTabedComponent = () => {
+  return (
+    <Tab.Navigator
+      tabBarOptions={{
+        showIcon: true,
+        showLabel: false,
+        style: { backgroundColor: "white" },
+        indicatorStyle: { backgroundColor: "blue" },
+      }}
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ focused, color, size }) => {
+          let iconSource;
+          if (route.name === "Home") {
+            iconSource = homeIcon;
+          } else if (route.name === "Calculator") {
+            iconSource = calculatorIcon;
+          } else if (route.name === "About") {
+            iconSource = aboutIcon;
+          }
+          return (
+            <Image source={iconSource} style={{ width: 25, height: 25 }} />
+          );
+        },
+      })}
+      initialRouteName="About"
+      initialTabIndex={2}
+    >
+      <Tab.Screen name="Home" component={HomeScreen}></Tab.Screen>
+      <Tab.Screen name="Calculator" component={CalculatorScreen}></Tab.Screen>
+      <Tab.Screen name="About" component={AboutScreen}></Tab.Screen>
+    </Tab.Navigator>
+  );
+};

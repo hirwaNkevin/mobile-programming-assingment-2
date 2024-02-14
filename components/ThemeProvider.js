@@ -22,7 +22,7 @@ export const ThemeProvider = ({ children }) => {
     try {
       storedTheme = await AsyncStorage.getItem("theme");
       if (storedTheme !== null) {
-        setTheme(storedTheme);
+        setTheme(JSON.parse(storedTheme));
       }
     } catch (error) {
       console.log("Got the following error loading the theme" + error);
