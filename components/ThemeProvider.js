@@ -1,21 +1,56 @@
-const storeTheme = async (theme) => {
-  try {
-    await AsyncStorage.setItem("theme", theme);
-  } catch (error) {
-    console.log(error);
-  }
-};
+import { useState, createContext, useEffect } from "react";
 
-const loadTheme = async (theme) => {
-  let storedTheme;
-  try {
-    storedTheme = await AsyncStorage.setItem("theme");
-  } catch (error) {
-    console.log(error);
-  }
-  return storedTheme;
+export const ThemeProvider = ({ children }) => {
+  const [theme, setTheme] = useState(defaultTheme);
+
+  const ThemeContext = createContext();
+
+  useEffect(() => {
+    loadTheme();
+  }, []);
+
+  const storeTheme = async (theme) => {
+    try {
+      await AsyncStorage.setItem("theme", JSON.stringify(theme));
+    } catch (error) {
+      console.log("Got the following error storing the theme" + error);
+    }
+  };
+
+  const loadTheme = async () => {
+    let storedTheme;
+    try {
+      storedTheme = await AsyncStorage.getItem("theme");
+      if (storedTheme !== null) {
+        setTheme(storedTheme);
+      }
+    } catch (error) {
+      console.log("Got the following error loading the theme" + error);
+      setTheme(defaultTheme);
+    }
+    return storedTheme;
+  };
+
+  const updateTheme = (newTheme) => {
+    setTheme(newTheme);
+    storeTheme(newTheme);
+  };
+
+  return (
+    <ThemeContext.Provider value={{ theme, updateTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
 };
 
 const styles = StyleSheet.create({
   darkTheme: {},
 });
+
+const defaultTheme = {
+  // Default theme
+  background: "#ffffff",
+  text: "#000000",
+};
+
+export default ThemeContext;
