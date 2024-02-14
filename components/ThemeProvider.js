@@ -1,9 +1,9 @@
 import { useState, createContext, useEffect } from "react";
+import { StyleSheet } from "react-native";
 
+const ThemeContext = createContext();
 export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState(defaultTheme);
-
-  const ThemeContext = createContext();
 
   useEffect(() => {
     loadTheme();
