@@ -16,7 +16,6 @@ const Tab = createMaterialBottomTabNavigator();
 const Drawer = createDrawerNavigator();
 
 export default function App() {
-  const [theme, setTheme] = useState("dark");
   return (
     <NavigationContainer>
       <Tab.Navigator

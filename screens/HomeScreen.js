@@ -1,14 +1,18 @@
-import {useContext} from "react"
+import { useContext } from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 import image from "../assets/Kevin Hirwa Nzitatira.jpeg";
+import ThemeContext from "../components/ThemeProvider";
 const HomeScreen = () => {
+  const { theme, updateTheme } = useContext(ThemeContext);
   return (
     <View
       style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        height: "fit-content",
+        // display: "flex",
+        // alignItems: "center",
+        // justifyContent: "space-between",
+        // height: "fit-content",
+        backgroundColor: theme.backgroundColor,
+        text: theme.text,
       }}
     >
       <View>

@@ -49,8 +49,8 @@ const styles = StyleSheet.create({
 
 const defaultTheme = {
   // Default theme
-  background: "#ffffff",
-  text: "#000000",
+  background: "#222",
+  text: "#eee",
 };
 
 export default ThemeContext;
