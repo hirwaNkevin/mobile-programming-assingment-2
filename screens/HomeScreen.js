@@ -1,3 +1,4 @@
+import {useContext} from "react"
 import { Image, StyleSheet, Text, View } from "react-native";
 import image from "../assets/Kevin Hirwa Nzitatira.jpeg";
 const HomeScreen = () => {
