@@ -58,21 +58,52 @@ function AuthLoginScreen() {
     >
       <View
         style={{
-          borderColor: "#000",
-          borderWidth: 2,
+          borderColor: "#00c",
+          borderWidth: 1,
           borderRadius: 20,
+          shadowColor: "#001",
+          shadowOffset: 4,
+          shadowOpacity: "100%",
+          shadowRadius: 40,
           width: "75%",
           height: "70%",
           marginLeft: "auto",
           marginRight: "auto",
         }}
       >
-        <Text style={{ textAlign: "center", fontWeight: "bold", fontSize: 30 }}>
-          Login
-        </Text>
-        <TextInput placeholder="Username or email"></TextInput>
-        <TextInput placeholder="Password" secureTextEntry={true}></TextInput>
-        <Button title="Login" />
+        <View
+          style={{
+            padding: 5,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-around",
+            height: "75%",
+          }}
+        >
+          <Text
+            style={{ textAlign: "center", fontWeight: "bold", fontSize: 30 }}
+          >
+            Login
+          </Text>
+          <TextInput
+            placeholder="Username or email"
+            style={styles.inputField}
+          ></TextInput>
+          <TextInput
+            placeholder="Password"
+            secureTextEntry={true}
+            style={styles.inputField}
+          ></TextInput>
+          <Button title="Login" style={{ width: "100%" }} />
+          <View>
+            <Text>
+              Don't have an account?{" "}
+              <Text style={{ color: "blue", textDecorationLine: "underline" }}>
+                Sign Up
+              </Text>
+            </Text>
+          </View>
+        </View>
       </View>
     </View>
   );
@@ -144,3 +175,12 @@ const AboutScreenTabedComponent = () => {
     </Tab.Navigator>
   );
 };
+
+const styles = StyleSheet.create({
+  inputField: {
+    backgroundColor: "#aaa",
+    color: "#fff",
+    padding: 5,
+    fontSize: 13,
+  },
+});
