@@ -4,7 +4,7 @@ import HomeScreen from "./screens/HomeScreen";
 import CalculatorScreen from "./screens/CalculatorScreen";
 import AboutScreen from "./screens/AboutScreen";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import { Image, StyleSheet, View, Text } from "react-native";
+import { Image, StyleSheet, View, Text, TextInput, Button } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 // Import your custom icons
@@ -41,11 +41,11 @@ export default function App() {
       </ThemeProvider>
     </NavigationContainer>
   ) : (
-    <AuthScreen />
+    <AuthLoginScreen />
   );
 }
 
-function AuthScreen() {
+function AuthLoginScreen() {
   return (
     <View
       style={{
@@ -67,7 +67,12 @@ function AuthScreen() {
           marginRight: "auto",
         }}
       >
-        <Text style={{ textAlign: "center" }}>Hello World</Text>
+        <Text style={{ textAlign: "center", fontWeight: "bold", fontSize: 30 }}>
+          Login
+        </Text>
+        <TextInput placeholder="Username or email"></TextInput>
+        <TextInput placeholder="Password" secureTextEntry={true}></TextInput>
+        <Button title="Login" />
       </View>
     </View>
   );
