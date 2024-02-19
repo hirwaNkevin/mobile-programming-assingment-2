@@ -18,39 +18,8 @@ const Tab = createMaterialBottomTabNavigator();
 const Drawer = createDrawerNavigator();
 
 export default function App() {
-  return (
-    // <NavigationContainer>
-    //   {/* <Tab.Navigator
-    //     tabBarOptions={{
-    //       showIcon: true,
-    //       showLabel: false,
-    //       style: { backgroundColor: "white" },
-    //       indicatorStyle: { backgroundColor: "blue" },
-    //     }}
-    //     screenOptions={({ route }) => ({
-    //       tabBarIcon: ({ focused, color, size }) => {
-    //         let iconSource;
-    //         if (route.name === "Home") {
-    //           iconSource = homeIcon;
-    //         } else if (route.name === "Calculator") {
-    //           iconSource = calculatorIcon;
-    //         } else if (route.name === "About") {
-    //           iconSource = aboutIcon;
-    //         }
-    //         return (
-    //           <Image source={iconSource} style={{ width: 25, height: 25 }} />
-    //         );
-    //       },
-    //     })}
-    //   >
-    //     <Tab.Screen
-    //       name="Home"
-    //       component={HomeScreenTabedComponent}
-    //     ></Tab.Screen>
-    //     <Tab.Screen name="Calculator" component={CalculatorScreen}></Tab.Screen>
-    //     <Tab.Screen name="About" component={AboutScreen}></Tab.Screen>
-    //   </Tab.Navigator> */}
-    // </NavigationContainer>
+  let authenticated = false;
+  return authenticated === true ? (
     <NavigationContainer>
       <ThemeProvider>
         <Drawer.Navigator>
@@ -70,6 +39,16 @@ export default function App() {
         </Drawer.Navigator>
       </ThemeProvider>
     </NavigationContainer>
+  ) : (
+    <AuthScreen />
+  );
+}
+
+function AuthScreen() {
+  return (
+    <>
+      <Text>AuthScreen</Text>
+    </>
   );
 }
 
