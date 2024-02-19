@@ -4,7 +4,7 @@ import HomeScreen from "./screens/HomeScreen";
 import CalculatorScreen from "./screens/CalculatorScreen";
 import AboutScreen from "./screens/AboutScreen";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import { Image, StyleSheet } from "react-native";
+import { Image, StyleSheet, View, Text } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 // Import your custom icons
@@ -13,6 +13,7 @@ import calculatorIcon from "./assets/calculator_icon.svg";
 import aboutIcon from "./assets/about_icon.svg";
 import { ThemeProvider } from "./components/ThemeProvider";
 import HomeScreenTabedComponent from "./screens/HomeScreen";
+import { StatusBar } from "expo-status-bar";
 
 const Tab = createMaterialBottomTabNavigator();
 const Drawer = createDrawerNavigator();
@@ -46,9 +47,29 @@ export default function App() {
 
 function AuthScreen() {
   return (
-    <>
-      <Text>AuthScreen</Text>
-    </>
+    <View
+      style={{
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-around",
+      }}
+    >
+      <View
+        style={{
+          borderColor: "#000",
+          borderWidth: 2,
+          borderRadius: 20,
+          width: "75%",
+          height: "70%",
+          marginLeft: "auto",
+          marginRight: "auto",
+        }}
+      >
+        <Text style={{ textAlign: "center" }}>Hello World</Text>
+      </View>
+    </View>
   );
 }
 
