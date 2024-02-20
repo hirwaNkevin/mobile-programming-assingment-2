@@ -1,9 +1,9 @@
 import { useState, createContext, useEffect } from "react";
+import { StyleSheet } from "react-native";
 
+const ThemeContext = createContext();
 export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState(defaultTheme);
-
-  const ThemeContext = createContext();
 
   useEffect(() => {
     loadTheme();
@@ -49,8 +49,8 @@ const styles = StyleSheet.create({
 
 const defaultTheme = {
   // Default theme
-  background: "#ffffff",
-  text: "#000000",
+  background: "#222",
+  text: "#eee",
 };
 
 export default ThemeContext;

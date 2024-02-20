@@ -1,17 +1,20 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   View,
   TextInput,
   Button,
-  StyleSheet,
   Text,
   Pressable,
+  StyleSheet,
 } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { ThemeProvider } from "../components/ThemeProvider";
+import ThemeContext from "../components/ThemeProvider";
 
 export default CalculatorScreen = () => {
   const [display, setDisplay] = useState("");
   const [result, setResult] = useState("");
+  const [theme, updateTheme] = useContext(ThemeContext);
   const handleNumberButtonClick = (symbol) => {
     if (symbol === "=") {
       setResult(eval(display).toString());
@@ -28,8 +31,15 @@ export default CalculatorScreen = () => {
     }
   };
   return (
-    <View>
-      <Text style={{ fontWeight: "bold", fontSize: 30, textAlign: "center" }}>
+    <View style={{ backgroundColor: theme.background }}>
+      <Text
+        style={{
+          fontWeight: "bold",
+          fontSize: 30,
+          textAlign: "center",
+          color: theme.text,
+        }}
+      >
         Calculator
       </Text>
       <View
@@ -40,8 +50,11 @@ export default CalculatorScreen = () => {
           marginRight: "auto",
         }}
       >
-        <InputDisplayComponent display={display} />
-        <OutputDisplayComponent result={result} />
+        <InputDisplayComponent
+          display={display}
+          style={{ color: theme.text }}
+        />
+        <OutputDisplayComponent result={result} style={{ color: theme.text }} />
         <KeyBoard handleNumberButtonClick={handleNumberButtonClick} />
       </View>
     </View>
@@ -70,6 +83,7 @@ const InputDisplayComponent = ({ display }) => {
 };
 
 const KeyBoard = ({ handleNumberButtonClick }) => {
+  const [theme, updateTheme] = useContext(ThemeContext);
   return (
     <View>
       <View style={[styles.KeyBoardRow]}>
