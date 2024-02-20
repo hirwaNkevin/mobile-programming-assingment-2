@@ -54,7 +54,6 @@ function MainApp() {
         <Drawer.Screen
           name="Home"
           component={HomeScreenTabedComponent}
-          style={{ backgroundColor: "#222" }}
         ></Drawer.Screen>
         <Drawer.Screen
           name="Calculator"
