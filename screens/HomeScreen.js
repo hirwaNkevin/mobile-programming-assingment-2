@@ -67,10 +67,10 @@ const HomeScreen = () => {
       <View
         style={[styles.profileSection, { backgroundColor: theme.background }]}
       >
-        <Image
+        {/* <Image
           style={[styles.rounded, styles.profileImage]}
           source={image}
-        ></Image>
+        ></Image> */}
       </View>
       <Text
         style={{

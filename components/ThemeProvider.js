@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
 const defaultTheme = {
   // Default theme
   background: "#222",
-  text: "#eee",
+  text: "#fff",
 };
 
 export default ThemeContext;

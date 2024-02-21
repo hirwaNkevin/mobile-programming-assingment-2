@@ -1,9 +1,13 @@
 import { View, Text, StyleSheet } from "react-native";
+import { ThemeProvider } from "../components/ThemeProvider";
+import ThemeContext from "../components/ThemeProvider";
+import { useContext } from "react";
 
 export default AboutScreen = () => {
+  const { theme, updateTheme } = useContext(ThemeContext);
   return (
-    <View>
-      <Text sytle={styles.AboutTile}>About Screen</Text>
+    <View style={{ backgroundColor: theme.background, height: "100%" }}>
+      <Text style={{ color: theme.text }}>About Screen</Text>
     </View>
   );
 };
