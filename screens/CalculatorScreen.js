@@ -14,7 +14,7 @@ import ThemeContext from "../components/ThemeProvider";
 export default CalculatorScreen = () => {
   const [display, setDisplay] = useState("");
   const [result, setResult] = useState("");
-  const [theme, updateTheme] = useContext(ThemeContext);
+  const { theme, updateTheme } = useContext(ThemeContext);
   const handleNumberButtonClick = (symbol) => {
     if (symbol === "=") {
       setResult(eval(display).toString());
@@ -83,7 +83,7 @@ const InputDisplayComponent = ({ display }) => {
 };
 
 const KeyBoard = ({ handleNumberButtonClick }) => {
-  const [theme, updateTheme] = useContext(ThemeContext);
+  const { theme, updateTheme } = useContext(ThemeContext);
   return (
     <View>
       <View style={[styles.KeyBoardRow]}>
