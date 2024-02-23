@@ -10,6 +10,7 @@ import AboutScreen from "./AboutScreen";
 import homeIcon from "../assets/home_icon.svg";
 import calculatorIcon from "../assets/calculator_icon.svg";
 import aboutIcon from "../assets/about_icon.svg";
+import ContactsScreen from "./ContactsScreen";
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -32,6 +33,8 @@ const HomeScreenTabedComponent = () => {
             iconSource = calculatorIcon;
           } else if (route.name === "About") {
             iconSource = aboutIcon;
+          } else if (route.name === "Contacts") {
+            iconSource = aboutIcon;
           }
           return (
             <Image
@@ -47,6 +50,7 @@ const HomeScreenTabedComponent = () => {
       <Tab.Screen name="Home" component={HomeScreen}></Tab.Screen>
       <Tab.Screen name="Calculator" component={CalculatorScreen}></Tab.Screen>
       <Tab.Screen name="About" component={AboutScreen}></Tab.Screen>
+      <Tab.Screen name="Contacts" component={ContactsScreen}></Tab.Screen>
     </Tab.Navigator>
   );
 };
