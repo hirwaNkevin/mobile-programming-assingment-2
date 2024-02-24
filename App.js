@@ -15,6 +15,7 @@ import { ThemeProvider } from "./components/ThemeProvider";
 import HomeScreenTabedComponent from "./screens/HomeScreen";
 import { StatusBar } from "expo-status-bar";
 import { createStackNavigator } from "@react-navigation/stack";
+import ContactsScreen from "./screens/ContactsScreen";
 
 const Tab = createMaterialBottomTabNavigator();
 const Drawer = createDrawerNavigator();
@@ -62,6 +63,10 @@ function MainApp() {
         <Drawer.Screen
           name="About"
           component={AboutScreenTabedComponent}
+        ></Drawer.Screen>
+        <Drawer.Screen
+          name="Contacts"
+          component={ContactsScreenTabedComponent}
         ></Drawer.Screen>
       </Drawer.Navigator>
     </ThemeProvider>
@@ -230,6 +235,8 @@ const CalculatorScreenTabedComponent = () => {
             iconSource = calculatorIcon;
           } else if (route.name === "About") {
             iconSource = aboutIcon;
+          } else if (route.name === "Contacts") {
+            iconSource = aboutIcon;
           }
           return (
             <Image source={iconSource} style={{ width: 25, height: 25 }} />
@@ -242,6 +249,7 @@ const CalculatorScreenTabedComponent = () => {
       <Tab.Screen name="Home" component={HomeScreen}></Tab.Screen>
       <Tab.Screen name="Calculator" component={CalculatorScreen}></Tab.Screen>
       <Tab.Screen name="About" component={AboutScreen}></Tab.Screen>
+      <Tab.Screen name="Contacts" component={ContactsScreen}></Tab.Screen>
     </Tab.Navigator>
   );
 };
@@ -263,6 +271,8 @@ const AboutScreenTabedComponent = () => {
             iconSource = calculatorIcon;
           } else if (route.name === "About") {
             iconSource = aboutIcon;
+          } else if (route.name === "Contacts") {
+            iconSource = aboutIcon;
           }
           return (
             <Image source={iconSource} style={{ width: 25, height: 25 }} />
@@ -275,6 +285,42 @@ const AboutScreenTabedComponent = () => {
       <Tab.Screen name="Home" component={HomeScreen}></Tab.Screen>
       <Tab.Screen name="Calculator" component={CalculatorScreen}></Tab.Screen>
       <Tab.Screen name="About" component={AboutScreen}></Tab.Screen>
+    </Tab.Navigator>
+  );
+};
+const ContactsScreenTabedComponent = () => {
+  return (
+    <Tab.Navigator
+      tabBarOptions={{
+        showIcon: true,
+        showLabel: false,
+        style: { backgroundColor: "white" },
+        indicatorStyle: { backgroundColor: "blue" },
+      }}
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ focused, color, size }) => {
+          let iconSource;
+          if (route.name === "Home") {
+            iconSource = homeIcon;
+          } else if (route.name === "Calculator") {
+            iconSource = calculatorIcon;
+          } else if (route.name === "About") {
+            iconSource = aboutIcon;
+          } else if (route.name === "Contacts") {
+            iconSource = aboutIcon;
+          }
+          return (
+            <Image source={iconSource} style={{ width: 25, height: 25 }} />
+          );
+        },
+      })}
+      initialRouteName="Contacts"
+      initialTabIndex={3}
+    >
+      <Tab.Screen name="Home" component={HomeScreen}></Tab.Screen>
+      <Tab.Screen name="Calculator" component={CalculatorScreen}></Tab.Screen>
+      <Tab.Screen name="About" component={AboutScreen}></Tab.Screen>
+      <Tab.Screen name="Contacts" component={ContactsScreen}></Tab.Screen>
     </Tab.Navigator>
   );
 };
