@@ -10,7 +10,7 @@ import {
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { ThemeProvider } from "../components/ThemeProvider";
 import ThemeContext from "../components/ThemeProvider";
-import { Contacts } from "react-native-contacts";
+import * as Contacts from "expo-contacts";
 
 export default ContactsScreen = () => {
   let contactsList;
@@ -21,34 +21,22 @@ export default ContactsScreen = () => {
   }, []);
 
   const loadContacts = async () => {
-    try {
-      // Request permission
-      PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.READ_CONTACTS)
-        .then((granted) => {
-          if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-            // Get contacts
-            Contacts.getAll((err, contacts) => {
-              if (err) {
-                console.log(err);
-                return;
-              }
-              console.log(contacts);
-            });
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    } catch (error) {
-      console.log("" + error);
-      contactsList = "Oops something went wrong";
+    const { status } = await Contacts.requestPermissionsAsync();
+    if (status === "granted") {
+      const { data } = await Contacts.getContactsAsync();
+
+      if (data.length > 0) {
+        contactsList = data;
+      }
     }
+    return contactsList;
   };
 
   const { theme, updateTheme } = useContext(ThemeContext);
   return (
     <View style={{ backgroundColor: theme.background, height: "100%" }}>
       <Text style={{ color: theme.text }}>Contacts</Text>
+      <Text style={{ color: theme.text }}>{contactsList}</Text>
     </View>
   );
 };
